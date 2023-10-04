@@ -7,7 +7,7 @@
     tools:context=".Add_post">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Tweet"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_marginTop="38dp"
@@ -28,9 +28,9 @@
         android:textColor="#4C9EEB"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="@+id/Tweet"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintTop_toTopOf="@+id/Tweet" />
 
     <TextView
         android:id="@+id/Remove"
@@ -59,7 +59,7 @@
 
 
     <EditText
-        android:id="@+id/Email_EditText"
+        android:id="@+id/Text_EditText"
         android:layout_width="300dp"
         android:layout_height="56dp"
         android:background="@drawable/signup_1"

@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 
 import com.example.app_twitter.databinding.ActivityAddPostBinding;
@@ -40,7 +42,6 @@ public class Add_post extends AppCompatActivity {
                     binding.Remove.setVisibility(View.GONE);
                 }
 
-
             }
         });
         binding.Addimage.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +72,26 @@ public class Add_post extends AppCompatActivity {
                 binding.imageView.setVisibility(View.GONE);
                 binding.Remove.setVisibility(View.GONE);
                 binding.Addimage.setVisibility(View.VISIBLE);
+            }
+        });
+        binding.TextEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() > 0) {
+                    binding.Tweet.setBackgroundResource(R.drawable.buttom_add2);
+                }else {
+                    binding.Tweet.setBackgroundResource(R.drawable.buttom_add);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
