@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.app_twitter.databinding.ActivityHomeBinding;
@@ -54,5 +56,12 @@ public class Home extends AppCompatActivity {
         image_itamList.add(new image_itam("Zon"));
         image_itamList.add(new image_itam("Ahmed zon"));
         image_itamList.add(new image_itam("Hala"));
+        binding.addFloatingactionbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplication(), Add_post.class);
+                startActivity(intent);
+            }
+        });
     }
 }

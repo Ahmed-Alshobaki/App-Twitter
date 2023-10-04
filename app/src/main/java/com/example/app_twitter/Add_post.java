@@ -14,6 +14,7 @@ import android.text.TextWatcher;
 import android.view.View;
 
 import com.example.app_twitter.databinding.ActivityAddPostBinding;
+import com.example.app_twitter.databinding.ActivityHomeBinding;
 
 public class Add_post extends AppCompatActivity {
     ActivityAddPostBinding binding;
@@ -74,7 +75,7 @@ public class Add_post extends AppCompatActivity {
                 binding.Addimage.setVisibility(View.VISIBLE);
             }
         });
-        binding.TextEditText.addTextChangedListener(new TextWatcher() {
+        binding.EditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -92,6 +93,14 @@ public class Add_post extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+        binding.Cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(getApplication(),Home.class);
+                startActivity(intent);
+                finish();
             }
         });
 

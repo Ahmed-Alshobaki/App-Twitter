@@ -32,6 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/Tweet" />
 
+
     <TextView
         android:id="@+id/Remove"
         android:layout_width="wrap_content"
@@ -44,7 +45,6 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/Addimage" />
-
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
@@ -59,7 +59,7 @@
 
 
     <EditText
-        android:id="@+id/Text_EditText"
+        android:id="@+id/_EditText"
         android:layout_width="300dp"
         android:layout_height="56dp"
         android:background="@drawable/signup_1"
@@ -79,7 +79,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email_EditText" />
+        app:layout_constraintTop_toBottomOf="@+id/_EditText" />
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/imageView"
@@ -88,9 +88,9 @@
         android:layout_marginTop="10dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/Addimage"
-        app:layout_constraintEnd_toEndOf="@+id/Email_EditText"
+        app:layout_constraintEnd_toEndOf="@+id/_EditText"
         app:layout_constraintStart_toStartOf="@+id/profile_image"
-        app:layout_constraintTop_toBottomOf="@+id/Email_EditText"
+        app:layout_constraintTop_toBottomOf="@+id/_EditText"
         app:riv_corner_radius="20dp" />
 
     <ImageView
