@@ -1,7 +1,9 @@
-package adapter;
+package com.example.app_twitter.adapter;
+
+import android.graphics.Bitmap;
 
 public class post_itam {
-    String image;
+    Bitmap image;
     String name;
     String username;
     String textbody;
@@ -16,13 +18,7 @@ public class post_itam {
         this.like = like;
     }
 
-    public String getImage() {
-        return image;
-    }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
 
     public String getName() {
         return name;

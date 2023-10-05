@@ -18,46 +18,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <EditText
-        android:id="@+id/Users"
-        android:layout_width="374dp"
+        android:id="@+id/name"
+        android:layout_width="0dp"
         android:layout_height="56dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/signup_1"
         android:hint="Username"
         android:inputType="textPersonName"
         android:paddingStart="7dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/Users"
+        android:layout_width="374dp"
+        android:layout_height="56dp"
+        android:background="@drawable/signup_1"
+        android:hint="Username"
+        android:layout_marginTop="10dp"
+        android:inputType="textPersonName"
+        android:paddingStart="7dp"
+        app:layout_constraintEnd_toEndOf="@+id/Email_EditText"
+        app:layout_constraintStart_toStartOf="@+id/Email_EditText"
+        app:layout_constraintTop_toBottomOf="@+id/Email_EditText" />
 
     <EditText
         android:id="@+id/Email_EditText"
         android:layout_width="374dp"
         android:layout_height="56dp"
-        android:layout_marginTop="25dp"
         android:background="@drawable/signup_1"
         android:hint="Emai"
+        android:layout_marginTop="10dp"
         android:inputType="textPersonName"
         android:paddingStart="7dp"
-        app:layout_constraintEnd_toEndOf="@+id/Users"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/Users"
-        app:layout_constraintTop_toBottomOf="@+id/Users" />
+        app:layout_constraintEnd_toEndOf="@+id/name"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
         android:id="@+id/password_EditText"
         android:layout_width="374dp"
         android:layout_height="56dp"
-        android:layout_marginTop="25dp"
         android:background="@drawable/signup_1"
         android:hint="Password"
         android:inputType="textPersonName"
         android:paddingStart="7dp"
-        app:layout_constraintEnd_toEndOf="@+id/Email_EditText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/Email_EditText"
-        app:layout_constraintTop_toBottomOf="@+id/Email_EditText" />
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/Users"
+        app:layout_constraintStart_toStartOf="@+id/Users"
+        app:layout_constraintTop_toBottomOf="@+id/Users" />
 
     <Button
         android:id="@+id/LOGIN"

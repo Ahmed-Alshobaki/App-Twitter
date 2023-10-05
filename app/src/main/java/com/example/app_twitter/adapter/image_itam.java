@@ -1,4 +1,4 @@
-package adapter;
+package com.example.app_twitter.adapter;
 
 public class image_itam {
     String name;

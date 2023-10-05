@@ -1,30 +1,21 @@
 package com.example.app_twitter;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.example.app_twitter.databinding.ActivityHomeBinding;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
-import adapter.adapter_image;
-import adapter.adapter_post;
-import adapter.image_itam;
-import adapter.post_itam;
+import com.example.app_twitter.adapter.adapter_image;
+import com.example.app_twitter.adapter.adapter_post;
+import com.example.app_twitter.adapter.image_itam;
+import com.example.app_twitter.adapter.post_itam;
 
 public class Home extends AppCompatActivity {
     ActivityHomeBinding binding;
