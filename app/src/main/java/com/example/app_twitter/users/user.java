@@ -1,4 +1,4 @@
-package users;
+package com.example.app_twitter.users;
 
 public class user {
     int id;

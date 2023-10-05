@@ -62,7 +62,7 @@
         android:id="@+id/_EditText"
         android:layout_width="300dp"
         android:layout_height="56dp"
-        android:background="@drawable/signup_1"
+        android:background="@drawable/sign_1"
         android:backgroundTint="#FCFCFE"
         android:hint="What’s happening?"
         android:inputType="textPersonName"

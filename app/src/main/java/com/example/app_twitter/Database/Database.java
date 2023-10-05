@@ -5,8 +5,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.app_twitter.users.user;
 
 public class Database extends SQLiteOpenHelper {
 
@@ -62,16 +63,16 @@ public class Database extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-//    public boolean insertUser(user user) {
-//        SQLiteDatabase liteDatabase = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//
-//        values.put(COLUMN_name, user.getName());
-//        values.put(COLUMN_Email, user.getEmail());
-//        values.put(COLUMN_Password, user.getPassword());
-//        values.put(COLUMN_name, user.getName());
-//
-//        long Result = liteDatabase.insert(Table_User_Name, null, values);
-//        return Result != -1;
-//    }
+    public boolean insertUser(user user) {
+        SQLiteDatabase liteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_New_Id, user.getId());
+        values.put(COLUMN_New_Name, user.getName());
+        values.put(COLUMN_New_Username, user.getUsername());
+        values.put(COLUMN_New_Email, user.getEmail());
+        values.put(COLUMN_New_Password, user.getPassword());
+
+        long Result = liteDatabase.insert(Table_New_User_Name, null, values);
+        return Result != -1;
+    }
 }

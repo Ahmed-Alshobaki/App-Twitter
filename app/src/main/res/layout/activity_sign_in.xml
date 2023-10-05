@@ -19,12 +19,12 @@
 
     <EditText
         android:id="@+id/Email_EditText"
-        android:layout_width="374dp"
+        android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/signup_1"
+        android:background="@drawable/sign_1"
         android:hint="Phone number, email or username"
         android:inputType="textPersonName"
         android:paddingStart="7dp"
@@ -35,10 +35,10 @@
 
     <EditText
         android:id="@+id/password_EditText"
-        android:layout_width="374dp"
+        android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/signup_1"
+        android:background="@drawable/sign_1"
         android:hint="Password"
         android:inputType="textPersonName"
         android:paddingStart="7dp"
@@ -66,14 +66,12 @@
         android:id="@+id/Forgotpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:text="Forgot password?"
         android:textColor="#000000"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/LOGIN"
-        app:layout_constraintStart_toStartOf="@+id/LOGIN"
         app:layout_constraintTop_toBottomOf="@+id/LOGIN" />
 
     <androidx.cardview.widget.CardView
@@ -121,8 +119,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        app:cardCornerRadius="5dp"
         android:layout_marginStart="15dp"
+        app:cardCornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/cardView3"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
         app:layout_constraintTop_toTopOf="@+id/cardView3">
@@ -151,6 +149,7 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/Signup"
 

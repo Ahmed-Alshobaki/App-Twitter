@@ -13,16 +13,22 @@
         android:theme="@style/Theme.AppTwitter"
         tools:targetApi="31">
         <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
             android:name=".Add_post"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".abr_button"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Home"
+            android:exported="true"></activity>
+        <activity
+            android:name=".SingUp"
+            android:exported="false" />
+        <activity
+            android:name=".SignIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,12 +36,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SingUp"
-            android:exported="false" />
-        <activity
-            android:name=".SignIn"
-            android:exported="false" />
         <activity
             android:name=".Main_splash_Activity"
             android:exported="true" />
