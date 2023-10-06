@@ -30,6 +30,7 @@
         android:hint="Name"
         android:inputType="textPersonName"
         android:paddingStart="7dp"
+        android:paddingEnd="7dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +42,7 @@
         android:layout_height="56dp"
         android:background="@drawable/sign_1"
         android:hint="Username"
+        android:paddingEnd="7dp"
         android:layout_marginTop="10dp"
         android:inputType="textPersonName"
         android:paddingStart="7dp"
@@ -57,6 +59,7 @@
         android:layout_marginTop="10dp"
         android:inputType="textPersonName"
         android:paddingStart="7dp"
+        android:paddingEnd="7dp"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
@@ -69,13 +72,14 @@
         android:hint="Password"
         android:inputType="textPersonName"
         android:paddingStart="7dp"
+        android:paddingEnd="7dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@+id/Usersname"
         app:layout_constraintStart_toStartOf="@+id/Usersname"
         app:layout_constraintTop_toBottomOf="@+id/Usersname" />
 
     <Button
-        android:id="@+id/LOGIN"
+        android:id="@+id/Register"
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:layout_marginTop="44dp"
@@ -97,7 +101,7 @@
         app:layout_constraintBottom_toTopOf="@+id/Donthaveanaccount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LOGIN">
+        app:layout_constraintTop_toBottomOf="@+id/Register">
 
         <ImageView
             android:id="@+id/imageView6"

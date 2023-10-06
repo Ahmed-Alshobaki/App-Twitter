@@ -46,12 +46,16 @@ public class user {
         this.password = password;
     }
 
-    public user(int id, String name, String username, String email, String password) {
-        this.id = id;
+    public user(String name, String username, String email, String password) {
+
         this.name = name;
         this.username = username;
         Email = email;
         this.password = password;
+    }
+    public user() {
+
+
     }
 
     String password;
