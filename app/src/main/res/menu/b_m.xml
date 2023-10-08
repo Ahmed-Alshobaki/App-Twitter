@@ -3,16 +3,16 @@
 
     <item android:id="@+id/bottom_home"
 
-        android:icon="@drawable/baseline_home_24"
+        android:icon="@drawable/home"
         android:title="Home"/>
-    <item android:id="@+id/searsh"
-        android:icon="@drawable/searsh"
-        android:title="favoritess"/>
+    <item android:id="@+id/search"
+        android:icon="@drawable/search"
+        android:title="Search"/>
     <item android:id="@+id/favorites"
-        android:icon="@drawable/love"
-        android:title="favoritess"/>
+        android:icon="@drawable/heart"
+        android:title="Favorites"/>
     <item android:id="@+id/bottom_person"
-        android:icon="@drawable/baseline_person_24"
+        android:icon="@drawable/personal"
         android:title="Person"/>
 
 

@@ -7,11 +7,11 @@
     tools:context=".abr_button">
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bootm"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="15dp"
         android:background="@drawable/abr_buttom"
         app:layout_constraintBottom_toBottomOf="parent"

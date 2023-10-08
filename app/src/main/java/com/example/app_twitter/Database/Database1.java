@@ -13,7 +13,7 @@ import com.example.app_twitter.users.user;
 
 public class Database1 extends SQLiteOpenHelper {
 
-    final public static Integer VERSION = 1;
+    final public static Integer VERSION = 2;
     final public static String TABLE_Post= "Table_post";
     final public static String Database = "Database_post";
     final public static String COLUMN_Id_post = "id_post";
@@ -82,40 +82,21 @@ public class Database1 extends SQLiteOpenHelper {
         return cursor;
 
     }
-    public boolean isEmailExists(String email) {
+
+
+
+    public boolean isExists(String name,String COLUMN) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
-        boolean emailExists = false;
-
-        try {
-            String query = "SELECT " + Table_New_User_Name + " FROM " + COLUMN_New_Email + " WHERE " + email + " = ?";
-            cursor = db.rawQuery(query, new String[]{email});
-
-            if (cursor != null && cursor.getCount() > 0) {
-                emailExists = true;
-            }
-        } catch ( Exception e) {
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-            db.close();
-        }
-
-        return emailExists;
-    }
-    public boolean isUsernameExists(String username) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = null;
+        int count = 0;
         boolean usernameExists = false;
 
         try {
-            String query = "SELECT " + Table_New_User_Name + " FROM " + COLUMN_New_Username + " WHERE " + username + " = ?";
-            cursor = db.rawQuery(query, new String[]{username});
+            String query = "SELECT COUNT(*) FROM " + Table_New_User_Name + " WHERE " + COLUMN + " = ?";
+            cursor = db.rawQuery(query, new String[]{name});
 
-            if (cursor != null && cursor.getCount() > 0) {
-                // اسم المستخدم موجود في الجدول
-                usernameExists = true;
+            if (cursor != null && cursor.moveToFirst()) {
+                count = cursor.getInt(0);
             }
         } catch (SQLiteException e) {
             e.printStackTrace();
@@ -125,10 +106,10 @@ public class Database1 extends SQLiteOpenHelper {
             }
             db.close();
         }
-
-        return usernameExists;
+        if (count>0){
+            return  false;
+        }{return  true;}
     }
-
 
 
 }

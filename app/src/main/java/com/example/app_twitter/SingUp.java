@@ -146,13 +146,22 @@ public class SingUp extends AppCompatActivity {
                     binding.passwordEditText.setError("Enter a password of 6 or more characters");
                     passwordboolean = false;
                 }else {passwordboolean = true;}
+                System.out.println("----------------------------------------------------------------");
+                System.out.println(database.isExists(Email,Database1.COLUMN_New_Email));
+
+                System.out.println("--------------------------------------------");
                 if (password.length() >= 5&&nameboolean&&passwordboolean&&UsersNameboolean&&Emailboolean) {
-                    if (database.isEmailExists(Email)){
-                        if (database.isUsernameExists(UsersName)){
-                           user  user = new user(name, UsersName, Email,password);
-                            Insert(user);
-                        }else { binding.EmailEditText.setError("There is a similar email, please enter another one");}
-                    }else  {  binding.Usersname.setError("There is a similar Usersname, please enter another one");}
+                    if (database.isExists(Email,Database1.COLUMN_New_Email)){
+                        if (database.isExists(UsersName,Database1.COLUMN_New_Username)){
+                            if (hasNoSpaces(UsersName)){
+                                user  user = new user(name, UsersName, Email,password);
+                                Insert(user);
+                            }else {
+                                binding.Usersname.setError("Can't exist username hasNoSpaces");
+                            }
+
+                        }else { binding.Usersname.setError("There is a similar Usersname, please enter another one");}
+                   }else  {  binding.EmailEditText.setError("There is a similar Email, please enter another one");}
 
 
                 }
@@ -170,6 +179,14 @@ public class SingUp extends AppCompatActivity {
             AlertDialog.Builder builder = new AlertDialog.Builder(SingUp.this);
             builder.setTitle("Wrong").setMessage("There is a problem with storage in databases!!");
             builder.show();
+        }
+    }
+    public static boolean hasNoSpaces(String word) {
+        // استخدم دالة contains للبحث عن مساحات فارغة في الكلمة
+        if (word.contains(" ")) {
+            return false;
+        } else {
+            return true;
         }
     }
     public static boolean isValidEmail(CharSequence target) {
