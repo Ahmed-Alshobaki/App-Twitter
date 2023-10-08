@@ -69,15 +69,16 @@ public class SignIn extends AppCompatActivity {
         binding.LOGIN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = binding.EmailEditText.getText().toString();
+                String emailORusername = binding.EmailEditText.getText().toString();
                 String password = binding.passwordEditText.getText().toString();
-                if (email.isEmpty()) {
+
+                if (emailORusername.isEmpty()) {
                     binding.EmailEditText.setError("Please enter an email");
                 }
                 if (password.isEmpty()) {
                     binding.passwordEditText.setError("Please enter an Password");
                 }
-                if (checkLogin(email,password)){
+                if (checkLogin(emailORusername,password,emailORusername)){
                     Intent  intent = new Intent(SignIn.this,Home.class);
                     startActivity(intent);
                 }
@@ -86,10 +87,10 @@ public class SignIn extends AppCompatActivity {
     }
 
     @SuppressLint("Range")
-    public boolean checkLogin(String Email, String Password) {
+    public boolean checkLogin(String Email, String Password, String Username) {
         Cursor cursor = database1.getCursor();
         while (cursor.moveToNext()) {
-            if (cursor.getString(cursor.getColumnIndex(Database1.COLUMN_New_Email)).equals(Email)) {
+            if (cursor.getString(cursor.getColumnIndex(Database1.COLUMN_New_Email)).equals(Email)||cursor.getString(cursor.getColumnIndex(Database1.COLUMN_New_Username)).equals(Username)) {
                 if (cursor.getString(cursor.getColumnIndex(Database1.COLUMN_New_Password)).equals(Password)) {
                     return true;
                 }

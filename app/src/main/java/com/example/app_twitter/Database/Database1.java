@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.app_twitter.adapter.post_itam;
 import com.example.app_twitter.users.user;
 
 public class Database1 extends SQLiteOpenHelper {
@@ -73,6 +74,17 @@ public class Database1 extends SQLiteOpenHelper {
         values.put(COLUMN_New_Email, user.getEmail());
         values.put(COLUMN_New_Password, user.getPassword());
 
+        long Result = liteDatabase.insert(Table_New_User_Name, null, values);
+        return Result != -1;
+    }
+    public  boolean insertPost(post_itam post_itam) {
+        SQLiteDatabase liteDatabase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_Name, post_itam.getName());
+        values.put(COLUMN_Username, post_itam.getUsername());
+        values.put(COLUMN_Like, post_itam.getLike());
+        values.put(COLUMN_Time, post_itam.getTime());
+        values.put(COLUMN_Textbody, post_itam.getTextbody());
         long Result = liteDatabase.insert(Table_New_User_Name, null, values);
         return Result != -1;
     }

@@ -10,6 +10,22 @@ public class post_itam {
     String time;
     int like ;
 
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     public post_itam(String name, String username, String textbody, String time, int like) {
         this.name = name;
         this.username = username;
