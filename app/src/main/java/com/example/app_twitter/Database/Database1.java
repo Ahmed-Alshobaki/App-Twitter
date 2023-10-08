@@ -1,5 +1,6 @@
 package com.example.app_twitter.Database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -85,7 +86,7 @@ public class Database1 extends SQLiteOpenHelper {
         values.put(COLUMN_Like, post_itam.getLike());
         values.put(COLUMN_Time, post_itam.getTime());
         values.put(COLUMN_Textbody, post_itam.getTextbody());
-        long Result = liteDatabase.insert(Table_New_User_Name, null, values);
+        long Result = liteDatabase.insert(TABLE_Post, null, values);
         return Result != -1;
     }
     public Cursor getCursor() {
@@ -122,6 +123,37 @@ public class Database1 extends SQLiteOpenHelper {
             return  false;
         }{return  true;}
     }
+    @SuppressLint("Range")
+    public user getUserByUsername(String Name  , String COLUMN) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        user user = null;
+
+        try {
+            String query = "SELECT * FROM " + Table_New_User_Name + " WHERE " + COLUMN + " = ?";
+            cursor = db.rawQuery(query, new String[]{Name});
+
+            if (cursor != null && cursor.moveToFirst()) {
+                // استخراج البيانات من الاستعلام
+                String name = cursor.getString(cursor.getColumnIndex(COLUMN_New_Name));
+                String email = cursor.getString(cursor.getColumnIndex(COLUMN_New_Email));
+               String password = cursor.getString(cursor.getColumnIndex(COLUMN_New_Password));
+               String Username = cursor.getString(cursor.getColumnIndex(COLUMN_New_Username));
+                // إنشاء كائن User باستخدام البيانات
+                user = new user(name,Username,email,password);
+            }
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            db.close();
+        }
+
+        return user;
+    }
+
 
 
 }

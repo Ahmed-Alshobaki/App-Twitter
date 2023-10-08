@@ -33,7 +33,9 @@ public class post_itam {
         this.time = time;
         this.like = like;
     }
+    public post_itam() {
 
+    }
 
 
     public String getName() {

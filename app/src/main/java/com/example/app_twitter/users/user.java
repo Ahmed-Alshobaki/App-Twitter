@@ -5,6 +5,7 @@ public class user {
     String name ;
     String username ;
     String Email;
+    String password;
 
     public int getId() {
         return id;
@@ -58,5 +59,5 @@ public class user {
 
     }
 
-    String password;
+
 }

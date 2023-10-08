@@ -19,12 +19,16 @@ import com.example.app_twitter.users.user;
 public class SignIn extends AppCompatActivity {
     ActivitySignInBinding binding;
     Database1 database1 = new Database1(this);
-
+    SharedPreferences preferencesE_p ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         binding = ActivitySignInBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
+        preferencesE_p =  getSharedPreferences("my_preferences",MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferencesE_p.edit();
+
+
         binding.Signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,6 +83,8 @@ public class SignIn extends AppCompatActivity {
                     binding.passwordEditText.setError("Please enter an Password");
                 }
                 if (checkLogin(emailORusername,password,emailORusername)){
+                    editor.putString("emailORusername", emailORusername);
+                    editor.apply();
                     Intent  intent = new Intent(SignIn.this,Home.class);
                     startActivity(intent);
                 }

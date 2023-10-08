@@ -17,10 +17,10 @@ import com.example.app_twitter.users.user;
 public class SingUp extends AppCompatActivity {
     ActivitySingUpBinding binding;
     Database1 database;
-    boolean nameboolean= false;
-    boolean UsersNameboolean= false;
-    boolean passwordboolean= false;
-    boolean Emailboolean= false;
+    boolean nameboolean = false;
+    boolean UsersNameboolean = false;
+    boolean passwordboolean = false;
+    boolean Emailboolean = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,47 +121,62 @@ public class SingUp extends AppCompatActivity {
                 String Email = binding.EmailEditText.getText().toString();
                 if (name.isEmpty()) {
                     binding.name.setError("Please enter your name");
-                     nameboolean= false;
-                }else {nameboolean=true;}
+                    nameboolean = false;
+                } else {
+                    nameboolean = true;
+                }
                 if (UsersName.isEmpty()) {
                     binding.Usersname.setError("Please enter your UsersName");
                     UsersNameboolean = false;
-                }else {UsersNameboolean=true;}
+                } else {
+                    UsersNameboolean = true;
+                }
 
-               if (!(name.length() >= 3)) {
+                if (!(name.length() >= 3)) {
                     binding.name.setError("Enter a name of 3 or more characters");
-                   nameboolean = false;
-                }else { nameboolean = true;}
+                    nameboolean = false;
+                } else {
+                    nameboolean = true;
+                }
 //
                 if (!(isValidEmail(Email))) {
                     binding.EmailEditText.setError("Please enter your Email");
-                    Emailboolean=false;
-                }else {Emailboolean=true;}
+                    Emailboolean = false;
+                } else {
+                    Emailboolean = true;
+                }
                 if (password.isEmpty()) {
                     binding.passwordEditText.setError("Please enter your Password");
-                    passwordboolean= false;
-                }else { passwordboolean= true;}
+                    passwordboolean = false;
+                } else {
+                    passwordboolean = true;
+                }
 
-                if (!(password.length() >= 5)){
+                if (!(password.length() >= 5)) {
                     binding.passwordEditText.setError("Enter a password of 6 or more characters");
                     passwordboolean = false;
-                }else {passwordboolean = true;}
+                } else {
+                    passwordboolean = true;
+                }
                 System.out.println("----------------------------------------------------------------");
-                System.out.println(database.isExists(Email,Database1.COLUMN_New_Email));
-
+                System.out.println(database.isExists(Email, Database1.COLUMN_New_Email));
                 System.out.println("--------------------------------------------");
-                if (password.length() >= 5&&nameboolean&&passwordboolean&&UsersNameboolean&&Emailboolean) {
-                    if (database.isExists(Email,Database1.COLUMN_New_Email)){
-                        if (database.isExists(UsersName,Database1.COLUMN_New_Username)){
-                            if (hasNoSpaces(UsersName)){
-                                user  user = new user(name, UsersName, Email,password);
+                if (password.length() >= 5 && nameboolean && passwordboolean && UsersNameboolean && Emailboolean) {
+                    if (database.isExists(Email, Database1.COLUMN_New_Email)) {
+                        if (database.isExists(UsersName, Database1.COLUMN_New_Username)) {
+                            if (hasNoSpaces(UsersName)) {
+                                user user = new user(name, UsersName, Email, password);
                                 Insert(user);
-                            }else {
+                            } else {
                                 binding.Usersname.setError("Can't exist username hasNoSpaces");
                             }
 
-                        }else { binding.Usersname.setError("There is a similar Usersname, please enter another one");}
-                   }else  {  binding.EmailEditText.setError("There is a similar Email, please enter another one");}
+                        } else {
+                            binding.Usersname.setError("There is a similar Usersname, please enter another one");
+                        }
+                    } else {
+                        binding.EmailEditText.setError("There is a similar Email, please enter another one");
+                    }
 
 
                 }
@@ -171,7 +186,8 @@ public class SingUp extends AppCompatActivity {
 
 
     }
-    void  Insert(user user){
+
+    void Insert(user user) {
         if (database.insertUser(user)) {
             Intent intent1 = new Intent(SingUp.this, SignIn.class);
             startActivity(intent1);
@@ -181,6 +197,7 @@ public class SingUp extends AppCompatActivity {
             builder.show();
         }
     }
+
     public static boolean hasNoSpaces(String word) {
         // استخدم دالة contains للبحث عن مساحات فارغة في الكلمة
         if (word.contains(" ")) {
@@ -189,6 +206,7 @@ public class SingUp extends AppCompatActivity {
             return true;
         }
     }
+
     public static boolean isValidEmail(CharSequence target) {
         return !TextUtils.isEmpty(target) && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
     }

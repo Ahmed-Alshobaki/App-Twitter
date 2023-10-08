@@ -4,25 +4,38 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
+import java.time.LocalDateTime;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 
+import com.example.app_twitter.Database.Database1;
+import com.example.app_twitter.adapter.post_itam;
 import com.example.app_twitter.databinding.ActivityAddPostBinding;
 import com.example.app_twitter.databinding.ActivityHomeBinding;
+import com.example.app_twitter.users.user;
 
+import java.time.LocalDateTime;
 public class Add_post extends AppCompatActivity {
     ActivityAddPostBinding binding;
+    Database1 database1 ;
+    SharedPreferences preferencesE_p ;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         binding = ActivityAddPostBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
+        preferencesE_p =  getSharedPreferences("my_preferences",MODE_PRIVATE);
+        LocalDateTime currentTime = LocalDateTime.now();
+        database1 = new Database1(this);
         setContentView(binding.getRoot());
         binding.Addimage2.setVisibility(View.GONE);
         binding.Remove.setVisibility(View.GONE);
@@ -75,7 +88,7 @@ public class Add_post extends AppCompatActivity {
                 binding.Addimage.setVisibility(View.VISIBLE);
             }
         });
-        binding.EditText.addTextChangedListener(new TextWatcher() {
+        binding.textbody.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -103,6 +116,43 @@ public class Add_post extends AppCompatActivity {
                 finish();
             }
         });
+        binding.Tweet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                post_itam post_itam =new post_itam();
+                String emailORusername = preferencesE_p.getString("emailORusername", "null");
+                if (containsAtSymbol(emailORusername)){
+                    user user =   database1.getUserByUsername(emailORusername,Database1.COLUMN_New_Email);
+                    post_itam.setName(user.getName());
+                    System.out.println(currentTime);
+                    post_itam.setLike(0);
+                    post_itam.setTime(String.valueOf(currentTime));
+                    post_itam.setUsername(user.getUsername());
+                    post_itam.setTextbody(binding.textbody.getText().toString());
+                    database1.insertPost(post_itam);
+                }else {
+                    user user =  database1.getUserByUsername(emailORusername,Database1.COLUMN_New_Username);
+                    post_itam.setName(user.getName());
+                    post_itam.setLike(0);
+                    post_itam.setTime(String.valueOf(currentTime));
+                    post_itam.setUsername(user.getUsername());
+                    post_itam.setTextbody(binding.textbody.getText().toString());
+                    database1.insertPost(post_itam);
+                    System.out.println(user.getUsername());
+                }
 
+//                System.out.println("----------------------------------------------------");
+//                System.out.println(emailORusername);
+//                System.out.println("----------------------------------------------------");
+//                post_itam.setName();
+//                database1.insertPost();
+
+
+            }
+        });
     }
+    public boolean containsAtSymbol(String text) {
+        return text != null && text.contains("@");
+    }
+
 }
