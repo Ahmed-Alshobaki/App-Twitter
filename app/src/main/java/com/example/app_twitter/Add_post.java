@@ -23,6 +23,8 @@ import com.example.app_twitter.databinding.ActivityHomeBinding;
 import com.example.app_twitter.users.user;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Add_post extends AppCompatActivity {
     ActivityAddPostBinding binding;
     Database1 database1 ;
@@ -34,7 +36,7 @@ public class Add_post extends AppCompatActivity {
         binding = ActivityAddPostBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
         preferencesE_p =  getSharedPreferences("my_preferences",MODE_PRIVATE);
-        LocalDateTime currentTime = LocalDateTime.now();
+        LocalDateTime currentDateTime = LocalDateTime.now();
         database1 = new Database1(this);
         setContentView(binding.getRoot());
         binding.Addimage2.setVisibility(View.GONE);
@@ -120,13 +122,15 @@ public class Add_post extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 post_itam post_itam =new post_itam();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = currentDateTime.format(formatter);
                 String emailORusername = preferencesE_p.getString("emailORusername", "null");
                 if (containsAtSymbol(emailORusername)){
                     user user =   database1.getUserByUsername(emailORusername,Database1.COLUMN_New_Email);
                     post_itam.setName(user.getName());
-                    System.out.println(currentTime);
+                    System.out.println(formattedDateTime);
                     post_itam.setLike(0);
-                    post_itam.setTime(String.valueOf(currentTime));
+                    post_itam.setTime(String.valueOf(formattedDateTime));
                     post_itam.setUsername(user.getUsername());
                     post_itam.setTextbody(binding.textbody.getText().toString());
                     database1.insertPost(post_itam);
@@ -134,18 +138,13 @@ public class Add_post extends AppCompatActivity {
                     user user =  database1.getUserByUsername(emailORusername,Database1.COLUMN_New_Username);
                     post_itam.setName(user.getName());
                     post_itam.setLike(0);
-                    post_itam.setTime(String.valueOf(currentTime));
+                    post_itam.setTime(String.valueOf(formattedDateTime));
                     post_itam.setUsername(user.getUsername());
                     post_itam.setTextbody(binding.textbody.getText().toString());
                     database1.insertPost(post_itam);
                     System.out.println(user.getUsername());
                 }
 
-//                System.out.println("----------------------------------------------------");
-//                System.out.println(emailORusername);
-//                System.out.println("----------------------------------------------------");
-//                post_itam.setName();
-//                database1.insertPost();
 
 
             }

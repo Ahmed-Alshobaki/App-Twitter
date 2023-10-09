@@ -7,12 +7,19 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.example.app_twitter.adapter.post_itam;
 import com.example.app_twitter.users.user;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class Database1 extends SQLiteOpenHelper {
 
     final public static Integer VERSION = 2;
@@ -59,7 +66,9 @@ public class Database1 extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(TableUsers);
 
     }
-
+    LocalDateTime currentDateTime = LocalDateTime.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    String formattedDateTime = currentDateTime.format(formatter);
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL(" drop table  if exists " + TABLE_Post);
@@ -152,6 +161,27 @@ public class Database1 extends SQLiteOpenHelper {
         }
 
         return user;
+    }
+    @SuppressLint("Range")
+    public ArrayList<post_itam> getPostList() {
+        SQLiteDatabase liteDatabase = this.getReadableDatabase();
+        Cursor cursor = liteDatabase.rawQuery(" select * from " + TABLE_Post, null);
+        ArrayList<post_itam> list = new ArrayList<>();
+        String otherTime =cursor.getString(cursor.getColumnIndex(COLUMN_Time));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime dateTime = LocalDateTime.parse(otherTime, formatter);
+        while (cursor.moveToNext()) {
+            post_itam post_itam = new post_itam();
+            post_itam.setName(cursor.getString(cursor.getColumnIndex(COLUMN_Name)));
+            post_itam.setUsername(cursor.getString(cursor.getColumnIndex(COLUMN_Username)));
+            post_itam.setTextbody(cursor.getString(cursor.getColumnIndex(COLUMN_Textbody)));
+            post_itam.setLike(cursor.getInt(cursor.getColumnIndex(COLUMN_Like)));
+            post_itam.setTime(cursor.getString(cursor.getColumnIndex(COLUMN_Time)));
+
+          list.add(post_itam);
+        }
+        return list;
+
     }
 
 

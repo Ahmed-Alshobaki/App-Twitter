@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.app_twitter.Database.Database1;
 import com.example.app_twitter.databinding.ActivityHomeBinding;
 
 import java.util.ArrayList;
@@ -20,18 +21,16 @@ import com.example.app_twitter.adapter.post_itam;
 public class Home extends AppCompatActivity {
     ActivityHomeBinding binding;
 
-    List<post_itam> postItamList =new ArrayList<>();
+
     List<image_itam> image_itamList =new ArrayList<>();
+    Database1 database1 = new Database1(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
        binding = ActivityHomeBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
-        postItamList.add(new post_itam("ahmed", "Ahmed zon", "ondoiasndias", "10",17));
-        postItamList.add(new post_itam("ahmed", "Ahmed zon", "ondoiasndias", "6",80));
-        postItamList.add(new post_itam("ahmed", "Ahmed zon", "ondoiasndias", "6",80));
-        postItamList.add(new post_itam("ahmed", "Ahmed zon", "ondoiasndias", "6",80));
-        adapter_post adapterPost = new adapter_post(getBaseContext(),postItamList);
+
+        adapter_post adapterPost = new adapter_post(getBaseContext(),database1.getPostList());
        binding.RecyclerViewHomePost.setAdapter(adapterPost);
         LinearLayoutManager linearLayoutManagerPost = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false );
        binding.RecyclerViewHomePost.setLayoutManager(linearLayoutManagerPost);
