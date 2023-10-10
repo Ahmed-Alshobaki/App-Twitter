@@ -1,9 +1,12 @@
 package com.example.app_twitter;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,19 +21,22 @@ import com.example.app_twitter.adapter.adapter_post;
 import com.example.app_twitter.adapter.image_itam;
 import com.example.app_twitter.adapter.post_itam;
 
+
 public class Home extends AppCompatActivity {
     ActivityHomeBinding binding;
 
 
     List<image_itam> image_itamList =new ArrayList<>();
+    @SuppressLint("NewApi")
     Database1 database1 = new Database1(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
        binding = ActivityHomeBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
 
-        adapter_post adapterPost = new adapter_post(getBaseContext(),database1.getPostList());
+       adapter_post adapterPost = new adapter_post(getBaseContext(),database1.getPostList());
        binding.RecyclerViewHomePost.setAdapter(adapterPost);
         LinearLayoutManager linearLayoutManagerPost = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false );
        binding.RecyclerViewHomePost.setLayoutManager(linearLayoutManagerPost);

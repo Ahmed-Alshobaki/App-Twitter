@@ -23,9 +23,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/quicksandregular"
-        android:text=".12h"
+        android:text="-12h"
         android:textColor="#687684"
         android:textSize="18sp"
+        android:layout_marginStart="2dp"
 
         app:layout_constraintBottom_toBottomOf="@+id/usesname"
         app:layout_constraintStart_toEndOf="@+id/usesname"

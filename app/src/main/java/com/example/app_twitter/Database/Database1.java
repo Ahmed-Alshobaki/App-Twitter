@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi;
 import com.example.app_twitter.adapter.post_itam;
 import com.example.app_twitter.users.user;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class Database1 extends SQLiteOpenHelper {
 
-    final public static Integer VERSION = 2;
+    final public static Integer VERSION = 3;
     final public static String TABLE_Post= "Table_post";
     final public static String Database = "Database_post";
     final public static String COLUMN_Id_post = "id_post";
@@ -167,16 +168,31 @@ public class Database1 extends SQLiteOpenHelper {
         SQLiteDatabase liteDatabase = this.getReadableDatabase();
         Cursor cursor = liteDatabase.rawQuery(" select * from " + TABLE_Post, null);
         ArrayList<post_itam> list = new ArrayList<>();
-        String otherTime =cursor.getString(cursor.getColumnIndex(COLUMN_Time));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime dateTime = LocalDateTime.parse(otherTime, formatter);
+        LocalDateTime currentTime = LocalDateTime.now();
+
+
         while (cursor.moveToNext()) {
+            String otherTime  =cursor.getString(cursor.getColumnIndex(COLUMN_Time));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime dateTime = LocalDateTime.parse(otherTime, formatter);
+            Duration duration = Duration.between(dateTime, currentTime);
+            long totaltime = duration.toMinutes();
+            String totaltimeString=String.valueOf(totaltime+"m");
+            if (totaltime>=60){
+                totaltime = duration.toHours();
+                totaltimeString = String.valueOf(totaltime+"h");
+                if (totaltime>=24){
+                    totaltime = duration.toDays();
+                    totaltimeString = String.valueOf(totaltime+"d");
+                }
+            }
+            System.out.println(totaltime+"dd");
             post_itam post_itam = new post_itam();
             post_itam.setName(cursor.getString(cursor.getColumnIndex(COLUMN_Name)));
             post_itam.setUsername(cursor.getString(cursor.getColumnIndex(COLUMN_Username)));
             post_itam.setTextbody(cursor.getString(cursor.getColumnIndex(COLUMN_Textbody)));
             post_itam.setLike(cursor.getInt(cursor.getColumnIndex(COLUMN_Like)));
-            post_itam.setTime(cursor.getString(cursor.getColumnIndex(COLUMN_Time)));
+            post_itam.setTime(totaltimeString);
 
           list.add(post_itam);
         }
