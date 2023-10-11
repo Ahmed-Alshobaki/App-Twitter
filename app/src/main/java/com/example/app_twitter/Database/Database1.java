@@ -166,7 +166,7 @@ public class Database1 extends SQLiteOpenHelper {
     @SuppressLint("Range")
     public ArrayList<post_itam> getPostList() {
         SQLiteDatabase liteDatabase = this.getReadableDatabase();
-        Cursor cursor = liteDatabase.rawQuery(" select * from " + TABLE_Post, null);
+        Cursor cursor = liteDatabase.rawQuery("SELECT * FROM " + TABLE_Post + " ORDER BY time_post DESC", null);
         ArrayList<post_itam> list = new ArrayList<>();
         LocalDateTime currentTime = LocalDateTime.now();
 

@@ -9,7 +9,7 @@
         android:id="@+id/twitterblue_image"
         android:layout_width="45dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
+
         android:layout_marginEnd="16dp"
         android:src="@drawable/profile"
         app:civ_border_color="#FFFFFF"
@@ -22,11 +22,11 @@
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
         android:fontFamily="@font/quicksandregular"
         android:text="-12h"
         android:textColor="#687684"
         android:textSize="18sp"
-        android:layout_marginStart="2dp"
 
         app:layout_constraintBottom_toBottomOf="@+id/usesname"
         app:layout_constraintStart_toEndOf="@+id/usesname"
@@ -65,14 +65,17 @@
         android:id="@+id/textbody"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
         android:fontFamily="@font/poppinsregular"
         android:text="Y’all ready for this next post?"
         android:textColor="#141619"
         android:textSize="17sp"
         android:textStyle="bold"
 
-        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/usesname" />
 
 
@@ -87,12 +90,13 @@
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/textbody"
         app:riv_corner_radius="20dp" />
+
     <ImageView
         android:id="@+id/imageheart"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_marginStart="1dp"
+        android:layout_marginTop="5dp"
         android:src="@drawable/likepost"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
@@ -101,11 +105,11 @@
         android:id="@+id/textLikeNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:fontFamily="@font/poppinsregular"
         android:text="12"
+        android:layout_marginStart="5dp"
         android:textColor="#687684"
-        android:textSize="19sp"
+        android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageheart"
         app:layout_constraintStart_toEndOf="@+id/imageheart"
         app:layout_constraintTop_toTopOf="@+id/imageheart" />
@@ -113,10 +117,10 @@
     <ImageView
         android:id="@+id/imageshare"
         android:layout_width="25dp"
-        android:layout_height="20dp"
+        android:layout_height="25dp"
         android:layout_marginTop="5dp"
-        android:src="@drawable/share"
         android:layout_marginEnd="1dp"
+        android:src="@drawable/share"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 

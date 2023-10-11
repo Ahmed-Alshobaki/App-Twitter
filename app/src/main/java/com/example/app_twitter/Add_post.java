@@ -133,7 +133,9 @@ public class Add_post extends AppCompatActivity {
                     post_itam.setTime(String.valueOf(formattedDateTime));
                     post_itam.setUsername(user.getUsername());
                     post_itam.setTextbody(binding.textbody.getText().toString());
-                    database1.insertPost(post_itam);
+                    if (database1.insertPost(post_itam)){
+                        System.out.println("ssss");
+                    }
                 }else {
                     user user =  database1.getUserByUsername(emailORusername,Database1.COLUMN_New_Username);
                     post_itam.setName(user.getName());
@@ -141,14 +143,23 @@ public class Add_post extends AppCompatActivity {
                     post_itam.setTime(String.valueOf(formattedDateTime));
                     post_itam.setUsername(user.getUsername());
                     post_itam.setTextbody(binding.textbody.getText().toString());
-                    database1.insertPost(post_itam);
+                  if (  database1.insertPost(post_itam)){
+                      System.out.println("ssss");
+                  }
                     System.out.println(user.getUsername());
                 }
 
-
+              if (binding.textbody.getText().toString().isEmpty()){
+                  binding.textbody.setError("No text body");
+              }else {
+                  Intent intent = new Intent(Add_post.this,Home.class);
+                  startActivity(intent);
+                  finish();
+              }
 
             }
         });
+
     }
     public boolean containsAtSymbol(String text) {
         return text != null && text.contains("@");

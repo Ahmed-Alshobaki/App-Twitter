@@ -1,12 +1,16 @@
 package com.example.app_twitter.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.app_twitter.Database.Database1;
+import com.example.app_twitter.R;
 import com.example.app_twitter.databinding.CustomPostBinding;
 
 import java.util.List;
@@ -16,6 +20,9 @@ public class adapter_post extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     Context context;
     List<post_itam> postItamList ;
     CustomPostBinding binding;
+    boolean likePost=false;
+
+    Database1 database1 = new Database1(context.getApplicationContext());
 
 
     public adapter_post(Context context, List<post_itam> postItamList) {
@@ -38,6 +45,19 @@ public class adapter_post extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         myViewHolder.binding.usesname.setText("@"+postItamList.get(position).username);
         myViewHolder.binding.name.setText(postItamList.get(position).name);
         myViewHolder.binding.time.setText(postItamList.get(position).time);
+        myViewHolder.binding.imageheart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+          if (likePost==false){
+              likePost=true;
+              myViewHolder.binding.imageheart.setImageResource(R.drawable.likepost);
+          }else {
+              likePost=false;
+              myViewHolder.binding.imageheart.setImageResource(R.drawable.likepostred);
+          }
+
+            }
+        });
      //   myViewHolder.binding.textbody.setText(postItamList.get(position).textbody);
 
     }
