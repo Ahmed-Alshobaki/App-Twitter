@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.app_twitter.Database.Database1;
 import com.example.app_twitter.R;
 import com.example.app_twitter.databinding.CustomPostBinding;
+import com.example.app_twitter.users.user;
 
 import java.util.List;
 
@@ -21,13 +22,14 @@ public class adapter_post extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     List<post_itam> postItamList ;
     CustomPostBinding binding;
     boolean likePost=false;
+    Database1 database1 ;
 
-    Database1 database1 = new Database1(context.getApplicationContext());
 
 
-    public adapter_post(Context context, List<post_itam> postItamList) {
+    public adapter_post(Context context, List<post_itam> postItamList,Database1 Database) {
         this.context = context;
         this.postItamList = postItamList;
+        this.database1 = Database;
     }
 
     @NonNull
@@ -46,11 +48,13 @@ public class adapter_post extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         myViewHolder.binding.name.setText(postItamList.get(position).name);
         myViewHolder.binding.time.setText(postItamList.get(position).time);
         myViewHolder.binding.imageheart.setOnClickListener(new View.OnClickListener() {
+          //  user user=  database1.getUserByUsername(postItamList.get(position).username,Database1.COLUMN_New_Username);
             @Override
             public void onClick(View view) {
           if (likePost==false){
               likePost=true;
               myViewHolder.binding.imageheart.setImageResource(R.drawable.likepost);
+
           }else {
               likePost=false;
               myViewHolder.binding.imageheart.setImageResource(R.drawable.likepostred);

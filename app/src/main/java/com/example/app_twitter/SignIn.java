@@ -90,6 +90,14 @@ public class SignIn extends AppCompatActivity {
                 }
             }
         });
+        binding.Forgotpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignIn.this ,ForgotPassword.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @SuppressLint("Range")
@@ -105,6 +113,7 @@ public class SignIn extends AppCompatActivity {
         }
         return false;
     }
+
 
 
 }

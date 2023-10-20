@@ -36,7 +36,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
 
-       adapter_post adapterPost = new adapter_post(getBaseContext(),database1.getPostList());
+       adapter_post adapterPost = new adapter_post(getBaseContext(),database1.getPostList(),database1);
        binding.RecyclerViewHomePost.setAdapter(adapterPost);
         LinearLayoutManager linearLayoutManagerPost = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false );
        binding.RecyclerViewHomePost.setLayoutManager(linearLayoutManagerPost);

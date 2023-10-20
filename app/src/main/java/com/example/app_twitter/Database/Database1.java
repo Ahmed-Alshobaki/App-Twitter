@@ -20,10 +20,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-@RequiresApi(api = Build.VERSION_CODES.O)
+
 public class Database1 extends SQLiteOpenHelper {
 
-    final public static Integer VERSION = 3;
+    final public static Integer VERSION = 4;
     final public static String TABLE_Post= "Table_post";
     final public static String Database = "Database_post";
     final public static String COLUMN_Id_post = "id_post";
@@ -177,13 +177,13 @@ public class Database1 extends SQLiteOpenHelper {
             LocalDateTime dateTime = LocalDateTime.parse(otherTime, formatter);
             Duration duration = Duration.between(dateTime, currentTime);
             long totaltime = duration.toMinutes();
-            String totaltimeString=String.valueOf(totaltime+"m");
+            String totaltimeString=String.valueOf("-"+totaltime+"m");
             if (totaltime>=60){
                 totaltime = duration.toHours();
-                totaltimeString = String.valueOf(totaltime+"h");
+                totaltimeString = String.valueOf("-"+totaltime+"h");
                 if (totaltime>=24){
                     totaltime = duration.toDays();
-                    totaltimeString = String.valueOf(totaltime+"d");
+                    totaltimeString = String.valueOf("-"+totaltime+"d");
                 }
             }
             System.out.println(totaltime+"dd");
